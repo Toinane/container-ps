@@ -11,6 +11,7 @@ let labelsDefault = [
     {type: 'separator'},
     {label: 'About', role: 'about', accelerator: 'CmdOrCtrl+A'},
     {label: 'Quit', role: 'quit', accelerator: 'CmdOrCtrl+Q'},
+    {label: 'Reload List', accelerator: 'CmdOrCtrl+R', click: () => updateList()},
     {type: 'separator'}
 ];
 
@@ -107,7 +108,13 @@ function getContainers() {
             })
             resolve();
         })
-        .catch(err => reject(err))
+        .catch(err => {
+            labels.push({
+                label: 'We can\'t get the container list back. Is Docker on?'
+            })
+
+            resolve();
+        })
     )); 
 }
 
