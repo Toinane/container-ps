@@ -1,16 +1,24 @@
 {
-  "name": "docker-ps",
+  "name": "container-ps",
   "version": "1.0.0",
   "main": "src/main.js",
   "repository": "https://github.com/Toinane/docker-ps.git",
   "author": "Toinane <toinane@crea-that.fr>",
   "license": "MIT",
   "scripts": {
-    "start": "electron src/main.js"
+    "start": "electron src/main.js",
+    "release": "build --publish=never --config build.json"
   },
   "dependencies": {
   },
   "devDependencies": {
-    "electron": "^1.8.3"
-  }
+    "electron": "^1.8.3",
+    "electron-builder": "^20.4.1"
+  },
+  "keywords": [
+    "Docker",
+    "Containers",
+    "ps",
+    "list"
+  ]
 }

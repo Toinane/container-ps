@@ -1,0 +1,38 @@
+{
+    "appId": "com.electron.container-ps",
+    "productName": "Container PS",
+    "compression": "store",
+    "copyright": "Copyright @Toinane",
+    "asar": true,
+    "directories": {
+        "buildResources": "buildAssets",
+        "output": "build"
+    },
+    "files": [
+      "src/**/*",
+      "**/*"
+    ],
+    "mac": {
+        "category": "public.app-category.developer-tools",
+        "icon": "icon.icns",
+        "type": "distribution"
+    },
+    "dmg": {
+        "icon": "volumeIcon.icns",
+        "window": {
+            "width": 540,
+            "height": 380
+        }
+    },
+    "linux": {
+        "icon": "src/assets",
+        "synopsis": "Colorpicker App",
+        "category": "Development"
+    },
+    "win": {
+        "icon": "icon.ico"
+    },
+    "nsis": {
+        "oneClick": true
+    }
+}

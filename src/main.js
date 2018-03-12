@@ -7,7 +7,7 @@ const imageInfo = {
     down: nativeImage.createFromPath(__dirname + '/assets/downTemplate.png')
 }
 let labelsDefault = [
-    {label: 'Docker PS', enabled: false},
+    {label: 'Container PS', enabled: false},
     {type: 'separator'},
     {label: 'About', role: 'about', accelerator: 'CmdOrCtrl+A'},
     {label: 'Quit', role: 'quit', accelerator: 'CmdOrCtrl+Q'},
@@ -111,7 +111,9 @@ function getContainers() {
         .catch(err => {
             labels.push({
                 label: 'We can\'t get the container list back. Is Docker on?'
-            })
+            });
+            let array = err.toString().match(/.{1,35}/g);
+            array.forEach(el => labels.push({label: el, enabled: false}))
 
             resolve();
         })
