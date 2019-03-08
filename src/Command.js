@@ -1,8 +1,5 @@
 const { spawn } = require('child_process')
 
-// const trayIcon = nativeImage.createFromPath(path.join(dirname, 'assets/loadingTemplate.png'));
-// tray.setImage(trayIcon);
-
 class Command {
   static run(cmd, options = []) {
     return new Promise((resolve, reject) => {

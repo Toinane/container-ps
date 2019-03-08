@@ -13,7 +13,7 @@ class Container {
       this.image = container[6] || 'no image found'
       this.size  = container[7] || 'no size found'
     } else {
-      this.ports = 'no ports used'
+      this.ports = ''
       this.image = container[5] || 'no image found'
       this.size  = container[6] || 'no size found'
     }

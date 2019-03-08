@@ -6,7 +6,7 @@ require('fix-path')()
 
 app.on('will-finish-launching', () => {
   app.disableHardwareAcceleration()
-  app.dock.hide()
+  if (process.platform === 'darwin') app.dock.hide()
 })
 
 app.on('ready', async () => {

@@ -1,7 +1,7 @@
 {
     "appId": "com.electron.container-ps",
     "productName": "Container PS",
-    "compression": "maximum",
+    "compression": "normal",
     "copyright": "Copyright @Toinane",
     "asar": true,
     "directories": {
@@ -26,7 +26,7 @@
     },
     "linux": {
         "icon": "src/assets",
-        "synopsis": "Docker PS",
+        "synopsis": "Container PS",
         "category": "Development"
     },
     "win": {
