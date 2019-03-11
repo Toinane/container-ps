@@ -3,10 +3,11 @@ const path = require('path')
 const { Tray, nativeImage } = require('electron')
 
 class ContainerTray {
-  constructor() {
+  constructor(menu) {
     this.tray = new Tray(this.getImageLink('idle'))
     this.tray.setToolTip('Container PS')
     this.isLoading = false
+    this.setMenu(menu)
   }
 
   setIcon(type) {

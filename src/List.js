@@ -6,20 +6,23 @@ const Command = require('./Command')
 
 class List {
   constructor() {
-    this.tray = new Tray()
     this.separator = { type: 'separator' }
-    this.iconType = {
-      up: this.tray.getImageLink('up'),
-      restarting: this.tray.getImageLink('restarting'),
-      down: this.tray.getImageLink('down')
-    }
     this.defaultLabels = [
-      {  label: 'Container PS', enabled: false },
+      { label: 'Container PS', enabled: false },
       this.separator,
       { label: 'Reload List', accelerator: 'CmdOrCtrl+R', click: () => this.update() },
       { label: 'Quit', role: 'quit', accelerator: 'CmdOrCtrl+Q' },
       this.separator
     ]
+    this.tray = new Tray(Menu.buildFromTemplate([
+      ...this.defaultLabels, 
+      { label: 'Container PS is loading...', enabled: false }
+    ]))
+    this.iconType = {
+      up: this.tray.getImageLink('up'),
+      restarting: this.tray.getImageLink('restarting'),
+      down: this.tray.getImageLink('down')
+    }
   }
 
   async update() {
