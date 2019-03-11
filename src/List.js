@@ -1,4 +1,4 @@
-const { clipboard, Menu } = require('electron')
+const { clipboard, dialog, Menu } = require('electron')
 
 const Tray = require('./ContainerTray')
 const Container = require('./Container')
@@ -92,6 +92,16 @@ class List {
               label: 'Delete Container',
               id: container.id,
               click: async event => {
+                const response = await dialog.showMessageBox({
+                  type: 'warning',
+                  buttons: [ 'No', 'Yes' ],
+                  title: 'Do you really want to delete this container?',
+                  message: 'Do you really want to delete this container?',
+                  detail: 'This container will be deleted permanently and it will no longer be possible to recover it'
+                })
+
+                if(!response) return
+
                 this.tray.setLoading()
                 await Command.run('docker', ['stop', event.id])
                 await Command.run('docker', ['rm', event.id])
