@@ -41,7 +41,7 @@ class List {
     labels = labels.concat(this.defaultLabels)
 
     try {
-      const result = await Command.run('docker', ['ps', '-a', '-s'])
+      const result = await Command.spawn('docker', ['ps', '-a', '-s'])
       const lines = result.toString().split('\n')
 
       lines.shift()
@@ -73,7 +73,7 @@ class List {
               id: container.id,
               click: async event => {
                 this.tray.setLoading()
-                await Command.run('docker', [container.isUp() ? 'stop' : 'start', event.id])
+                await Command.spawn('docker', [container.isUp() ? 'stop' : 'start', event.id])
                 this.update()
               }
             }, {
@@ -81,8 +81,18 @@ class List {
               id: container.id,
               click: async event => {
                 this.tray.setLoading()
-                await Command.run('docker', ['restart', event.id])
+                await Command.spawn('docker', ['restart', event.id])
                 this.update()
+              }
+            }, {
+              label: "Open Console",
+              id: container.id,
+              click: async event => {
+                if(container.entrypoint.includes('bash')) {
+                  Command.exec(`osascript -e 'tell application "Terminal" to activate' -e 'tell application "Terminal" to do script "docker exec -ti ${event.id} bash"'`)
+                } else {
+                  Command.exec(`osascript -e 'tell application "Terminal" to activate' -e 'tell application "Terminal" to do script "docker exec -ti ${event.id} sh"'`)
+                }
               }
             }, this.separator, {
               label: 'Copy ID Container',
@@ -103,8 +113,8 @@ class List {
                 if(!response) return
 
                 this.tray.setLoading()
-                await Command.run('docker', ['stop', event.id])
-                await Command.run('docker', ['rm', event.id])
+                await Command.spawn('docker', ['stop', event.id])
+                await Command.spawn('docker', ['rm', event.id])
                 this.update()
               }
             }
