@@ -32,9 +32,14 @@ With the light Theme.
 
 When hovering over a container, you will have additional information about it, as well as buttons to turn it on, off, restart or delete it.
 
-# Download
+# Install or Download
 
-See in [releases pages](https://github.com/Toinane/container-ps/releases).
+The latest release can be dowloaded via ```brew cask```:
+```
+brew cask install container-ps
+```
+
+Downloads are available here: [releases pages](https://github.com/Toinane/container-ps/releases).
 
 # Development
 
