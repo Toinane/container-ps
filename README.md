@@ -36,7 +36,7 @@ When hovering over a container, you will have additional information about it, a
 
 The latest release can be dowloaded via ```brew cask```:
 ```
-brew cask install container-ps
+brew install --cask container-ps
 ```
 
 Downloads are available here: [releases pages](https://github.com/Toinane/container-ps/releases).
